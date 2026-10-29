@@ -1,0 +1,4 @@
+yt_dlp[default,curl-cffi] >= 2025.11.12
+pyinstaller
+sanitize_filename
+pyinstaller-versionfile

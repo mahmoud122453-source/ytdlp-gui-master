@@ -1,0 +1,9 @@
+.idea/
+*.exe
+build/
+upx/
+version.txt
+test*
+.venv/
+__pycache__/
+*.pyc

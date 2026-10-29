@@ -1,0 +1,63 @@
+# YT-DLP GUI
+[![Windows Build](https://github.com/aliencaocao/ytdlp-gui/actions/workflows/windows_build.yml/badge.svg)](https://github.com/aliencaocao/ytdlp-gui/actions/workflows/windows_build.yml)
+[![Linux Build](https://github.com/aliencaocao/ytdlp-gui/actions/workflows/linux_build.yml/badge.svg)](https://github.com/aliencaocao/ytdlp-gui/actions/workflows/linux_build.yml)
+
+This is (yet another) yt-dlp GUI built with pure Python and Tkinter. It is still in early development stage so only basic functions are developed and functional.
+
+## Installation
+For Windows and Linux, download the executable files from the [releases page](https://github.com/aliencaocao/ytdlp-gui/releases/latest).
+
+For macOS, you can clone this repository and run the `yt-dlp-gui.py` file with Python 3, or follow the build instructions below to build binary executables.
+
+### Run from source (Windows)
+
+Python **3.10–3.14** with Tkinter. The application entry point is `yt-dlp-gui.py`.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Place `ffmpeg.exe` and `ffprobe.exe` in the **same folder** as `yt-dlp-gui.py` (they are not Python packages — do not `pip install ffmpeg`). Download a Windows build from [yt-dlp FFmpeg Builds](https://github.com/yt-dlp/FFmpeg-Builds/releases/tag/latest) (`ffmpeg-master-latest-win64-gpl.zip`). `deno.exe` is optional; the app warns if it is missing.
+
+```powershell
+.\.venv\Scripts\python.exe yt-dlp-gui.py
+```
+
+Step-by-step Arabic instructions, troubleshooting, and legal notes: see [RUN_GUIDE.md](RUN_GUIDE.md). Teaching map: [TEACHING_GUIDE.md](TEACHING_GUIDE.md), [FILE_TEACHING_ORDER.md](FILE_TEACHING_ORDER.md), [PROJECT_MAP.md](PROJECT_MAP.md). Instructor verification summary: [FINAL_REPORT.md](FINAL_REPORT.md).
+
+
+## Features
+* Downloading videos from all sources that yt-dlp supports into your designated folder.
+* Choose and combine any video and audio formats into a single file, or download only video or only audio.
+* Built-in transcoding of audio into other formats (AAC, ALAC, FLAC, M4A, MP3, Opus, Vorbis, WAV) for ease of use on other platforms.
+* Packaged into a single executable and embeds ffmpeg and ffprobe binaries so user do not have to install anything.
+* Cross-platform (Windows, Linux, macOS) and works on both X86 and ARM machines. However, only Windows and Linux binary builds are available now, for other formats, you can build yourself from source following the insturctions below.
+
+![](home.png "Home page of the program")
+
+Home page of the program: "Download Video" and "Download Audio" will download the best quality available for video and/or audio.
+
+![](queue.png "Download queue of the program")
+
+Each time you add a download task, it will be added to the queue shown on the home page, with basic details, progress bar and download status.
+
+![](details.png "Download details page of the program")
+
+Download details page of the program (accessible by clicking "Customize Downloads"). You can choose formats with both video and audio streams in Download Options, or choose and combine any available format you like below. If you only choose an Audio format, you can choose to convert the audio into another format.
+
+
+## Planned features
+* Downloading playlists
+
+## Building
+You need Python 3.10-Python 3.14.
+1. Clone this repository.
+2. Install the dependencies with `pip install -r requirements.txt`. On Windows machines, a working `ffmpeg.exe` and `ffprobe.exe` is also needed in the same directory as `yt-dlp-gui.py`. You can download them from [here](https://github.com/yt-dlp/FFmpeg-Builds/releases/tag/latest). Choose `ffmpeg-master-latest-win64-gpl.zip`.
+3. Modify `version.yml` if needed
+4. (Optional) Install UPX and make sure it is on PATH. UPX helps to reduce binary size.
+5. Run commands in build.txt in system shell (`cd` to project dir). On non-Windows machines, remove `--add-data "ffmpeg.exe:." --add-data "ffprobe.exe:."` from it.
+
+## Responsible use
+
+Only download content you have the right to download. Do not use this tool to bypass logins, CAPTCHAs, or access restrictions. The optional browser-cookie prompt is for videos you already have legitimate access to in your own browser.
